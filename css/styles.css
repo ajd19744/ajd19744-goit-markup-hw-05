@@ -9,7 +9,7 @@
   --button-touch-color: #404bbf;
   --icon-hover-color: #31d0aa;
   --customer-logo-color: #8e8f99;
-  --customer-logo-hover-color: #404bbf;
+  --trancition-hover: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 html {
   box-sizing: border-box;
@@ -90,18 +90,43 @@ body {
 }
 
 .header-link {
+  position: relative;
   display: block;
   padding-top: 24px;
   padding-bottom: 24px;
-
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--main-color-text-background, #2e2f42);
+  transition: color var(--trancition-hover);
 }
 .header-link:is(:hover, :focus) {
   color: var(--button-touch-color, #404bbf);
+}
+.header-item > .studio::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: currentColor;
+  left: 0;
+  bottom: 0;
+  opacity: 1;
+}
+.header-item > .portfolio::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: currentColor;
+  left: 0;
+  bottom: 0;
+  opacity: 1;
 }
 .header-address {
   font-style: normal;
@@ -121,6 +146,7 @@ body {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--primary-text-color, #434455);
+  transition: color var(--trancition-hover);
 }
 .header-contact:is(:hover, :focus) {
   color: var(--button-touch-color, #404bbf);
@@ -172,6 +198,7 @@ body {
   color: var(--background-and-hero-text, #ffffff);
   cursor: pointer;
   background: var(--button-logo-color, #4d5ae5);
+  transition: background-color var(--trancition-hover);
 }
 .hero-btn:is(:hover, :focus) {
   background-color: var(--button-touch-color, #404bbf);
@@ -306,6 +333,7 @@ body {
   align-items: center;
   justify-content: center;
   fill: #f4f4fd;
+  transition: background-color var(--trancition-hover);
 }
 .team-soc-svg {
   fill: currentColor;
@@ -349,16 +377,19 @@ body {
   justify-content: center;
   align-items: center;
   color: #8e8f99;
-}
-.customer-svg {
-  fill: currentColor;
-}
-.customer-svg:is(:hover, :focus) {
-  fill: #404bbf;
+  transition: border-color var(--trancition-hover),
+    color var(--trancition-hover);
 }
 .customer-link:is(:hover, :focus) {
   border-color: #404bbf;
   color: #404bbf;
+}
+.customer-svg {
+  fill: currentColor;
+  transition: fill var(--trancition-hover);
+}
+.customer-svg:is(:hover, :focus) {
+  fill: #404bbf;
 }
 
 /*? ===========footer=========== */
@@ -416,6 +447,7 @@ body {
   align-items: center;
   justify-content: center;
   fill: var(--button-logo-color), #4d5ae5;
+  transition: background-color var(--trancition-hover);
 }
 .footer-svg {
   fill: currentColor;
@@ -454,8 +486,12 @@ body {
   cursor: pointer;
   background: var(--background-and-text-footer, #f4f4fd);
 }
-.filters-button:hover,
-.filters-button:focus {
+.filters-button {
+  transition: color var(--trancition-hover),
+    background-color var(--trancition-hover), box-shadow var(--trancition-hover),
+    border-color var(--trancition-hover);
+}
+.filters-button:is(:hover, :focus) {
   color: var(--background-and-hero-text, #ffffff);
   background-color: var(--button-touch-color, #404bbf);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
@@ -474,6 +510,9 @@ body {
   width: calc((100% - 48px) / 3);
   margin-left: 24px;
   margin-bottom: 48px;
+}
+.row-item > .link {
+  transition: box-shadow var(--trancition-hover);
 }
 .row-item > .link:hover {
   display: block;
